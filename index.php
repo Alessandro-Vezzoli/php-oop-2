@@ -28,6 +28,22 @@ class Prodotto {
         return $this->categoria;
     }
 }
+class Negozio {
+    protected $prodotti = [];
 
+    public function aggiungiProdotto(Prodotto $prodotto) {
+        $this->prodotti[] = $prodotto;
+    }
+
+    public function getProdottiPerCategoria($categoria) {
+        $prodottiCategoria = [];
+        foreach ($this->prodotti as $prodotto) {
+            if ($prodotto->getCategoria() === $categoria) {
+                $prodottiCategoria[] = $prodotto;
+            }
+        }
+        return $prodottiCategoria;
+    }
+}
 
 ?>
